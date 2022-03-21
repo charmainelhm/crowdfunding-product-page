@@ -6,7 +6,7 @@
   --color-accent-regular: #3cb4ac;
   --color-accent-dark: #147b74;
   --color-grey: #b1b1b1;
-  --color-light-grey: #fafafa;
+  --color-light-grey: #f4f4f4;
   --color-white: #ffffff;
 
   --fs-xl: 4rem;
@@ -14,6 +14,12 @@
   --fs-500: 2.5rem;
   --fs-400: 1.6rem;
   --fs-300: 1.4rem;
+
+  --fw-bold: 700;
+  --fw-medium: 500;
+  --fw-regular: 400;
+
+  --br-button: 50px;
 }
 
 html {
@@ -47,6 +53,75 @@ h2 {
 p {
   font-size: var(--fs-400);
   color: var(--color-text-grey);
+}
+/* Utilities */
+.rounded-corner {
+  border-radius: var(--br-button);
+}
+.btn {
+  font-size: var(--fs-300);
+  font-weight: var(--fw-medium);
+  background: var(--color-accent-regular);
+  color: var(--color-white);
+  border: none;
+  /* width: 16rem; */
+  padding: 2rem 3rem;
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+}
+
+.btn:disabled {
+  background: var(--color-grey);
+  pointer-events: none;
+}
+
+.btn:hover {
+  background: var(--color-accent-dark);
+}
+
+/* Bookmark Button */
+
+.btn--bookmark {
+  padding: 0;
+}
+
+.bookmark__icon {
+  display: block;
+}
+
+.bookmark-wrapper {
+  background: var(--color-light-grey);
+  color: var(--color-text-grey);
+  width: min-content;
+}
+
+.bookmark__content {
+  padding: 1.8rem 3rem 1.8rem 2rem;
+  font-weight: var(--fw-bold);
+  display: none;
+}
+
+.bookmark--active #background {
+  fill: var(--color-accent-dark);
+}
+
+.bookmark--active #bookmark {
+  fill: var(--color-white);
+}
+
+.bookmark--active .bookmark__content {
+  color: var(--color-accent-dark);
+}
+
+@media screen and (min-width: 600px) {
+  .bookmark-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .bookmark__content {
+    display: initial;
+  }
 }
 
 /* Attribution */
