@@ -5,6 +5,7 @@
   --color-text-grey: #7a7a7a;
   --color-accent-regular: #3cb4ac;
   --color-accent-dark: #147b74;
+  --color-bg: #f4f4f4;
   --color-grey: #b1b1b1;
   --color-light-grey: #d7d7d7;
   --color-white: #ffffff;
@@ -69,6 +70,11 @@ p {
 
 .container + .container {
   margin-top: 2.5rem;
+}
+
+.block {
+  border: 2px solid #b1b1b12c;
+  border-radius: var(--br-400);
 }
 
 .flex {
@@ -184,10 +190,10 @@ p {
 
 /* Hero Block */
 .hero-block {
-  margin-top: 5rem;
+  /* margin-top: 5rem; */
   text-align: center;
-  border: 2px solid #b1b1b12c;
-  border-radius: var(--br-400);
+  /* border: 2px solid #b1b1b12c;
+  border-radius: var(--br-400); */
   position: relative;
 }
 
@@ -205,6 +211,90 @@ p {
 .hero-block > p {
   margin-block: 2.5rem;
 }
+
+/* Stats Block */
+.stats-block .flex {
+  flex-direction: column;
+}
+.stats__data {
+  font-size: var(--fs-600);
+  color: var(--color-text-black);
+  font-weight: var(--fw-bold);
+  margin-bottom: 0.3rem;
+}
+
+.stats {
+  text-align: center;
+  padding: 1.8rem;
+  position: relative;
+}
+
+.stats:first-child {
+  padding-top: 0;
+}
+
+.divider::after {
+  content: "";
+  position: absolute;
+  left: 40%;
+  right: 40%;
+  top: 0;
+  height: 2px;
+  background-color: var(--color-light-grey);
+}
+
+.stats__goal progress {
+  width: 100%;
+  opacity: 0;
+}
+
+.stats__goal {
+  margin-top: 1.2rem;
+  background: var(--color-bg);
+  border-radius: var(--br-xl);
+  height: 1.2rem;
+  position: relative;
+}
+
+.stats__goal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 89%;
+  background: var(--color-accent-regular);
+  border-radius: var(--br-xl);
+}
+
+@media screen and (min-width: 600px) {
+  .stats-block .flex {
+    flex-direction: row;
+    /* gap: 3rem; */
+    /* justify-content: space-between; */
+  }
+
+  .stats {
+    text-align: left;
+    padding: 0;
+    width: 33%;
+  }
+
+  .stats:not(:first-child) {
+    padding-left: 3rem;
+  }
+
+  .divider::after {
+    height: 100%;
+    right: 99.5%;
+    left: 0;
+  }
+
+  .stats__goal {
+    margin-top: 4rem;
+  }
+}
+
 /* Attribution */
 .attribution {
   font-size: 11px;
