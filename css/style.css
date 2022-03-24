@@ -6,7 +6,7 @@
   --color-accent-regular: #3cb4ac;
   --color-accent-dark: #147b74;
   --color-grey: #b1b1b1;
-  --color-light-grey: #f4f4f4;
+  --color-light-grey: #d7d7d7;
   --color-white: #ffffff;
 
   --fs-xl: 4rem;
@@ -19,7 +19,8 @@
   --fw-medium: 500;
   --fw-regular: 400;
 
-  --br-button: 50px;
+  --br-xl: 60px;
+  --br-400: 8px;
 }
 
 html {
@@ -50,14 +51,20 @@ h2 {
   font-size: var(--fs-500);
 }
 
+h3 {
+  font-size: var(--fs-400);
+}
+
 p {
   font-size: var(--fs-400);
   color: var(--color-text-grey);
+  line-height: 1.5;
 }
 /* Utilities */
 .rounded-corner {
-  border-radius: var(--br-button);
+  border-radius: var(--br-xl);
 }
+
 .btn {
   font-size: var(--fs-300);
   font-weight: var(--fw-medium);
@@ -70,10 +77,10 @@ p {
   transition: all 0.1s ease-in;
 }
 
-.btn:disabled {
+/* .btn:disabled {
   background: var(--color-grey);
   pointer-events: none;
-}
+} */
 
 .btn:hover {
   background: var(--color-accent-dark);
@@ -122,6 +129,49 @@ p {
   .bookmark__content {
     display: initial;
   }
+}
+
+/* Card */
+.card {
+  width: 90%;
+  margin-inline: auto;
+  padding: 2.5rem;
+  border: 2px solid var(--color-light-grey);
+  border-radius: var(--br-400);
+}
+
+.card + .card {
+  margin-top: 2.5rem;
+}
+
+.card--inactive {
+  opacity: 0.4;
+}
+
+.card--inactive .btn {
+  background: var(--color-text-grey);
+  pointer-events: none;
+}
+
+.card__subtitle {
+  color: var(--color-accent-regular);
+  font-weight: var(--fw-medium);
+}
+
+.card__description {
+  margin-block: 2rem;
+}
+
+.card__data {
+  margin-bottom: 1.8rem;
+}
+
+.pledge-avail {
+  color: var(--color-text-black);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-600);
+  vertical-align: sub;
+  padding-right: 0.5rem;
 }
 
 /* Attribution */
