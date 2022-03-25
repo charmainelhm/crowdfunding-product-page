@@ -39,6 +39,9 @@ html {
 
 body {
   font-family: "Commissioner", Arial, Helvetica, sans-serif;
+  background: var(--color-bg) url(../images/image-hero-mobile.jpg) no-repeat
+    top/cover;
+  box-shadow: inset 0 80px 70px -70px black;
 }
 
 h1,
@@ -60,6 +63,16 @@ p {
   font-size: var(--fs-300);
   color: var(--color-text-grey);
   line-height: 1.5;
+}
+
+button {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    background-image: url(../images/image-hero-desktop.jpg);
+  }
 }
 /* Utilities */
 .container {
@@ -93,7 +106,6 @@ p {
   border: none;
   /* width: 16rem; */
   padding: 2rem 3rem;
-  cursor: pointer;
   transition: all 0.1s ease-in;
 }
 
@@ -104,6 +116,14 @@ p {
 
 .btn:hover {
   background: var(--color-accent-dark);
+}
+
+.overlay {
+  position: fixed;
+  background-color: black;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.1s ease-in;
 }
 
 /* Bookmark Button */
@@ -186,6 +206,88 @@ p {
   font-size: var(--fs-600);
   vertical-align: sub;
   padding-right: 0.5rem;
+}
+
+/* Navigation bar */
+.nav-bar {
+  justify-content: space-between;
+  padding-block: 2.5rem;
+  width: 90%;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  display: none;
+}
+
+.toggle-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url(../images/icon-hamburger.svg);
+}
+
+.nav__list {
+  list-style: none;
+  column-gap: 3rem;
+}
+
+.nav__link {
+  font-size: var(--fs-400);
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+  color: var(--color-white);
+}
+
+@media screen and (max-width: 599px) {
+  .toggle-btn {
+    display: inline-block;
+  }
+
+  .nav-bar {
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .nav-bar .nav__list,
+  .nav-bar .toggle-btn,
+  .nav-bar .nav__logo {
+    z-index: 5;
+  }
+
+  .nav__list {
+    width: 100%;
+    flex-direction: column;
+    background-color: white;
+    border-radius: var(--br-400);
+    top: 75px;
+    position: absolute;
+    opacity: 0;
+  }
+
+  .nav__item {
+    padding: 2rem;
+    border-bottom: 1px solid var(--color-light-grey);
+  }
+
+  .nav__link {
+    color: var(--color-text-black);
+  }
+
+  .nav--expanded .toggle-icon {
+    background-image: url(../images/icon-close-menu.svg);
+  }
+
+  .nav--expanded .nav__list {
+    opacity: 1;
+  }
+
+  .nav--expanded .overlay {
+    opacity: 0.3;
+  }
 }
 
 /* Hero Block */
