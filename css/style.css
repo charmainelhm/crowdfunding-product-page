@@ -14,7 +14,7 @@
   --fs-600: 3rem;
   --fs-500: 2.1rem;
   --fs-400: 1.6rem;
-  --fs-300: 1.4rem;
+  --fs-300: 1.5rem;
 
   --fw-bold: 700;
   --fw-medium: 500;
@@ -74,11 +74,26 @@ button {
     background-image: url(../images/image-hero-desktop.jpg);
   }
 }
+
+@media screen and (min-width: 900px) {
+  h1 {
+    font-size: var(--fs-600);
+  }
+
+  h3 {
+    font-size: var(--fs-500);
+  }
+
+  p {
+    font-size: var(--fs-400);
+  }
+}
+
 /* Utilities */
 .container {
   width: 88%;
   margin-inline: auto;
-  padding: 4rem 2rem;
+  padding: 4rem 2.4rem;
 }
 
 .container + .container {
@@ -106,9 +121,9 @@ button {
   background: var(--color-accent-regular);
   color: var(--color-white);
   border: none;
-  /* width: 16rem; */
   padding: 2rem 3rem;
   transition: all 0.1s ease-in;
+  white-space: nowrap;
 }
 
 /* .btn:disabled {
@@ -124,8 +139,15 @@ button {
   position: fixed;
   background-color: black;
   inset: 0;
+  max-height: 0;
   opacity: 0;
-  transition: opacity 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+
+@media screen and (min-width: 900px) {
+  .container {
+    padding: 4rem 3.5rem;
+  }
 }
 
 /* Bookmark Button */
@@ -145,7 +167,7 @@ button {
 }
 
 .bookmark__content {
-  padding: 1.8rem 3rem 1.8rem 2rem;
+  padding: 1.6rem 3rem 1.6rem 2rem;
   font-weight: var(--fw-bold);
   display: none;
 }
@@ -212,6 +234,22 @@ button {
   font-size: var(--fs-600);
   vertical-align: sub;
   padding-right: 0.5rem;
+}
+
+@media screen and (min-width: 600px) {
+  .flex--card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .card__data {
+    margin-bottom: 0;
+  }
+
+  .card__description {
+    margin-block: 3rem;
+  }
 }
 
 /* Navigation bar */
@@ -292,6 +330,7 @@ button {
   }
 
   .nav--expanded .overlay {
+    max-height: 100%;
     opacity: 0.3;
   }
 }
