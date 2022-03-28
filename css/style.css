@@ -516,6 +516,7 @@ input[type="radio"]:checked::before {
 .modal__content {
   background-color: var(--color-white);
   margin-block: 2rem;
+  max-width: 770px;
 }
 
 .modal__content > .flex {
@@ -579,16 +580,13 @@ input[type="radio"]:checked::before {
   display: block;
 }
 
-/* .pledge__amount-wrapper.hidden {
-  display: none;
-} */
-
 .pledge__amount-wrapper > p {
   margin-block: 3rem 2.5rem;
 }
 
 .pledge__amount-wrapper > .flex {
   justify-content: space-between;
+  column-gap: 2rem;
 }
 
 .pledge__amount {
@@ -605,6 +603,40 @@ input[type="radio"]:checked::before {
   outline: none;
   font-size: var(--fs-300);
   font-weight: var(--fw-bold);
+}
+
+@media screen and (min-width: 600px) {
+  .pledge-item label {
+    display: flex;
+    column-gap: 2rem;
+  }
+
+  .pledge__info {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .pledge-item .card__data {
+    order: 3;
+    margin-left: auto;
+  }
+
+  .pledge-item .card__description {
+    width: 100%;
+    order: 4;
+    margin-left: 3.5rem;
+  }
+
+  .pledge__amount-wrapper > p {
+    margin-block: 0;
+  }
+
+  .pledge-item--focused .pledge__amount-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2rem;
+  }
 }
 
 /* Attribution */
