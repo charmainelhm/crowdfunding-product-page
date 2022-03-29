@@ -14,10 +14,10 @@
 
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/style.css" />
-
+    <script defer src="js/script.js"></script>
     <title>Frontend Mentor | Crowdfunding product page</title>
   </head>
-  <body class="non-scrollable">
+  <body>
     <header>
       <nav class="nav-bar flex">
         <a class="nav__logo" href="index.html">
@@ -43,9 +43,14 @@
         A beautifully handcrafted monitor stand to reduce neck and eye strain.
       </p>
       <div class="flex">
-        <button class="rounded-corner btn">Back this project</button>
+        <button
+          data-pledge="no-reward"
+          class="rounded-corner btn select-pledge"
+        >
+          Back this project
+        </button>
         <div class="rounded-corner bookmark-wrapper">
-          <button class="rounded-corner btn btn--bookmark">
+          <button id="bookmark-btn" class="rounded-corner btn btn--bookmark">
             <svg
               class="bookmark__icon"
               width="56"
@@ -111,7 +116,12 @@
         </p>
         <div class="flex--card">
           <p class="card__data"><span class="pledge-avail">101</span> left</p>
-          <button class="rounded-corner btn">Select Reward</button>
+          <button
+            class="rounded-corner btn select-pledge"
+            data-pledge="standard"
+          >
+            Select Reward
+          </button>
         </div>
       </article>
       <article class="card">
@@ -125,7 +135,9 @@
         </p>
         <div class="flex--card">
           <p class="card__data"><span class="pledge-avail">64</span> left</p>
-          <button class="rounded-corner btn">Select Reward</button>
+          <button class="rounded-corner btn select-pledge" data-pledge="black">
+            Select Reward
+          </button>
         </div>
       </article>
 
@@ -143,7 +155,12 @@
         </p>
         <div class="flex--card">
           <p class="card__data"><span class="pledge-avail">101</span> left</p>
-          <button class="rounded-corner btn">Select Reward</button>
+          <button
+            class="rounded-corner btn select-pledge"
+            data-pledge="mahogany"
+          >
+            Select Reward
+          </button>
         </div>
       </article>
     </div>
@@ -161,15 +178,15 @@
           Monitor Riser worldwide. You will get an email once our campaign is
           completed.
         </p>
-        <button class="rounded-corner btn">Got it!</button>
+        <button class="rounded-corner btn close-modal">Got it!</button>
       </div>
     </div>
 
-    <div id="modal-pledge" class="modal">
+    <div id="modal-pledge" class="modal hidden">
       <div class="modal__content container">
         <div class="flex">
           <h2>Back this project</h2>
-          <button class="close-btn">
+          <button class="close-btn close-modal">
             <img src="images/icon-close-modal.svg" alt="" />
           </button>
         </div>
@@ -180,7 +197,7 @@
         <form action="">
           <fieldset>
             <ol class="pledge-options">
-              <li class="pledge-item card pledge-item--focused">
+              <li class="pledge-item card">
                 <div class="pledge__info">
                   <div class="pledge__header flex">
                     <input
@@ -189,7 +206,6 @@
                       value="no-reward"
                       id="pledge-no-reward"
                       class="pledge__radio"
-                      checked
                     />
                     <label for="pledge-no-reward">
                       <p class="card__title">Pledge with no reward</p></label

@@ -222,6 +222,10 @@ input[type="radio"]:checked::before {
   display: none;
 }
 
+.bookmark--active {
+  background-color: var(--color-bg);
+}
+
 .bookmark--active #background {
   fill: var(--color-accent-dark);
 }
