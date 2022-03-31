@@ -75,11 +75,11 @@
     <div class="block stats-block container">
       <div class="flex">
         <div class="stats">
-          <p class="stats__data">$89,914</p>
+          <p id="total-backed" class="stats__data">$89,914</p>
           <p class="stats__description">of $100,000 backed</p>
         </div>
         <div class="stats divider">
-          <p class="stats__data">5,007</p>
+          <p id="total-backers" class="stats__data">5,007</p>
           <p class="stats__description">total backers</p>
         </div>
         <div class="stats divider">
@@ -87,8 +87,8 @@
           <p class="stats__description">days left</p>
         </div>
       </div>
-      <div class="stats__goal">
-        <progress max="100" value="89"></progress>
+      <div class="goal-container">
+        <div class="goal-value"></div>
       </div>
     </div>
 
@@ -115,7 +115,9 @@
           Backer member list.
         </p>
         <div class="flex--card">
-          <p class="card__data"><span class="pledge-avail">101</span> left</p>
+          <p class="card__data">
+            <span class="pledge-avail" data-pledge="standard">101</span> left
+          </p>
           <button
             class="rounded-corner btn select-pledge"
             data-pledge="standard"
@@ -134,7 +136,9 @@
           you. You'll be added to our Backer member list. Shipping is included.
         </p>
         <div class="flex--card">
-          <p class="card__data"><span class="pledge-avail">64</span> left</p>
+          <p class="card__data">
+            <span class="pledge-avail" data-pledge="black">64</span> left
+          </p>
           <button class="rounded-corner btn select-pledge" data-pledge="black">
             Select Reward
           </button>
@@ -154,7 +158,9 @@
           Shipping is included.
         </p>
         <div class="flex--card">
-          <p class="card__data"><span class="pledge-avail">101</span> left</p>
+          <p class="card__data">
+            <span class="pledge-avail" data-pledge="mahogany">101</span> left
+          </p>
           <button
             class="rounded-corner btn select-pledge"
             data-pledge="mahogany"
@@ -194,7 +200,7 @@
           Want to support us in bringing Mastercraft Bamboo Monitor Riser out in
           the world?
         </p>
-        <form action="">
+        <form novalidate>
           <fieldset>
             <ol class="pledge-options">
               <li class="pledge-item card">
@@ -228,6 +234,8 @@
                         value="10"
                         min="1"
                         size="4"
+                        class="form__input"
+                        data-pledge="no-reward"
                       />
                     </div>
                     <button class="btn rounded-corner">Continue</button>
@@ -255,7 +263,8 @@
                     added to a special Backer member list.
                   </p>
                   <p class="card__data">
-                    <span class="pledge-avail">101</span> left
+                    <span class="pledge-avail" data-pledge="standard">101</span>
+                    left
                   </p>
                 </div>
                 <div class="pledge__amount-wrapper">
@@ -269,6 +278,8 @@
                         value="25"
                         min="25"
                         size="4"
+                        class="form__input"
+                        data-pledge="standard"
                       />
                     </div>
                     <button class="btn rounded-corner">Continue</button>
@@ -296,7 +307,8 @@
                     list. Shipping is included.
                   </p>
                   <p class="card__data">
-                    <span class="pledge-avail">101</span> left
+                    <span class="pledge-avail" data-pledge="black">101</span>
+                    left
                   </p>
                 </div>
                 <div class="pledge__amount-wrapper">
@@ -310,13 +322,15 @@
                         value="75"
                         min="75"
                         size="4"
+                        class="form__input"
+                        data-pledge="black-edition"
                       />
                     </div>
                     <button class="btn rounded-corner">Continue</button>
                   </div>
                 </div>
               </li>
-              <li class="pledge-item card card--inactive">
+              <li class="pledge-item card">
                 <div class="pledge__info">
                   <div class="pledge__header flex">
                     <input
@@ -337,7 +351,8 @@
                     Backer member list. Shipping is included.
                   </p>
                   <p class="card__data">
-                    <span class="pledge-avail">0</span> left
+                    <span class="pledge-avail" data-pledge="mahogany">0</span>
+                    left
                   </p>
                 </div>
                 <div class="pledge__amount-wrapper">
@@ -351,6 +366,8 @@
                         value="200"
                         min="200"
                         size="4"
+                        class="form__input"
+                        data-pledge="mahogany-edition"
                       />
                     </div>
                     <button class="btn rounded-corner">Continue</button>

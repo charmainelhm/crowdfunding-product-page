@@ -10,11 +10,13 @@ const openPledgeModal = document.querySelectorAll(".select-pledge");
 const closeModal = document.querySelectorAll(".close-modal");
 const pledgeModal = document.getElementById("modal-pledge");
 const radioGroup = document.querySelectorAll(".pledge__radio");
+const displayQtnGroup = document.querySelectorAll(".pledge-avail");
+const form = document.querySelector("form");
 
 const mastercraft = {
   totalBacked: 89914,
   totalBackers: 5007,
-  type: { standard: 101, black: 64, mahogany: 1 },
+  quantity: { standard: 101, black: 64, mahogany: 1 },
 };
 
 const restartRadio = function () {
@@ -33,6 +35,14 @@ bookmarkBtn.addEventListener("click", function () {
   if (bookmarkBtn.parentElement.classList.contains("bookmark--active")) {
     bookmarkContent.textContent = "Bookmarked";
   } else bookmarkContent.textContent = "Bookmark";
+});
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const pledgeSelected = document.querySelector(
+    'input[name="pledge-type"]:checked'
+  ).value;
+  console.log(document.querySelector(`[data-pledge=${pledgeSelected}]`).value);
 });
 
 radioGroup.forEach((radio) => {
@@ -61,3 +71,23 @@ closeModal.forEach((btn) => {
     btn.closest(".modal").classList.add("hidden");
   });
 });
+
+const displayPageData = function () {
+  document.getElementById("total-backed").textContent =
+    "$" + mastercraft.totalBacked.toLocaleString();
+  document.getElementById("total-backers").textContent =
+    mastercraft.totalBackers.toLocaleString();
+
+  document.querySelector(".goal-value").style.width = `${Math.ceil(
+    (mastercraft.totalBacked / 100_000) * 100
+  )}%`;
+
+  displayQtnGroup.forEach((display) => {
+    display.textContent = mastercraft.quantity[display.dataset.pledge];
+    if (display.textContent === "0") {
+      display.closest(".card").classList.add("card--inactive");
+    }
+  });
+};
+
+displayPageData();

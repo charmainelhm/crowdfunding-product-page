@@ -448,24 +448,15 @@ input[type="radio"]:checked::before {
   background-color: var(--color-light-grey);
 }
 
-.stats__goal progress {
-  width: 100%;
-  opacity: 0;
-}
-
-.stats__goal {
-  margin-top: 1.2rem;
+.goal-container {
+  margin-top: 3rem;
   background: var(--color-bg);
   border-radius: var(--br-xl);
   height: 1.2rem;
-  position: relative;
+  width: 100%;
 }
 
-.stats__goal::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+.goal-value {
   height: 100%;
   width: 89%;
   background: var(--color-accent-regular);
