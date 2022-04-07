@@ -9,6 +9,7 @@ const bookmarkContent = document.querySelector(".bookmark__content");
 const openPledgeModal = document.querySelectorAll(".select-pledge");
 const closeModal = document.querySelectorAll(".close-modal");
 const pledgeModal = document.getElementById("modal-pledge");
+const completeModal = document.getElementById("modal-completed");
 const radioGroup = document.querySelectorAll(".pledge__radio");
 const displayQtnGroup = document.querySelectorAll(".pledge-avail");
 const form = document.querySelector("form");
@@ -39,10 +40,54 @@ bookmarkBtn.addEventListener("click", function () {
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  const pledgeSelected = document.querySelector(
+  const pledgeType = document.querySelector(
     'input[name="pledge-type"]:checked'
   ).value;
-  console.log(document.querySelector(`[data-pledge=${pledgeSelected}]`).value);
+  const pledgeSelected = document.querySelector(`[data-select=${pledgeType}]`);
+  const pledgeParent = pledgeSelected.closest(".pledge__amount");
+
+  // if (!pledgeSelected.validity.valid) {
+  //   pledgeParent.classList.add("pledge__amount--error");
+
+  //   if (pledgeSelected.validity.rangeUnderflow) {
+  //     pledgeSelected.setCustomValidity("Amount input is too low!");
+  //   }
+
+  //   if (pledgeSelected.validity.valueMissing) {
+  //     pledgeSelected.setCustomValidity("Value missing!");
+  //   }
+
+  //   pledgeSelected.reportValidity();
+  // } else {
+  //   pledgeSelected.setCustomValidity("");
+  //   // pledgeSelected.reportValidity();
+  //   pledgeParent.classList.remove("pledge__amount--error");
+  // }
+
+  if (!pledgeSelected.validity.valid) {
+    pledgeParent.classList.add("pledge__amount--error");
+  }
+
+  if (pledgeSelected.validity.rangeUnderflow) {
+    pledgeSelected.setCustomValidity("Amount input is too low!");
+  } else if (pledgeSelected.validity.valueMissing) {
+    pledgeSelected.setCustomValidity("Value missing!");
+  } else {
+    pledgeSelected.setCustomValidity("");
+    pledgeParent.classList.remove("pledge__amount--error");
+  }
+
+  pledgeSelected.reportValidity();
+
+  if (pledgeSelected.validity.valid) {
+    mastercraft.totalBacked += Number(pledgeSelected.value);
+    mastercraft.totalBackers += 1;
+    if (pledgeType !== "no-reward") mastercraft.quantity[`${pledgeType}`] -= 1;
+
+    displayPageData();
+    pledgeModal.classList.add("hidden");
+    completeModal.classList.remove("hidden");
+  }
 });
 
 radioGroup.forEach((radio) => {

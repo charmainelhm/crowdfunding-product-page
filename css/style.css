@@ -9,12 +9,14 @@
   --color-grey: #b1b1b1;
   --color-light-grey: #d7d7d7;
   --color-white: #ffffff;
+  --color-error: rgb(201, 29, 29);
 
   --fs-xl: 4rem;
   --fs-600: 3rem;
   --fs-500: 2.1rem;
   --fs-400: 1.6rem;
   --fs-300: 1.5rem;
+  --fs-200: 1.4rem;
 
   --fw-bold: 700;
   --fw-medium: 500;
@@ -102,6 +104,16 @@ input[type="radio"]::before {
 
 input[type="radio"]:checked::before {
   transform: scale(1);
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 @media screen and (min-width: 600px) {
@@ -591,6 +603,7 @@ input[type="radio"]:checked::before {
   padding: 1.5rem 2.5rem;
   border: 1.5px solid var(--color-light-grey);
   display: inline-block;
+  position: relative;
 }
 
 .pledge__amount input {
@@ -598,6 +611,26 @@ input[type="radio"]:checked::before {
   outline: none;
   font-size: var(--fs-300);
   font-weight: var(--fw-bold);
+  width: 50px;
+}
+
+.pledge__amount--error {
+  border-color: var(--color-error);
+  border-width: 2px;
+}
+
+.error-message {
+  position: absolute;
+  bottom: -55%;
+  left: 20%;
+  font-size: var(--fs-200);
+  font-weight: var(--fw-regular);
+  color: var(--color-error);
+  display: none;
+}
+
+.pledge__amount--error .error-message {
+  display: block;
 }
 
 @media screen and (min-width: 600px) {
